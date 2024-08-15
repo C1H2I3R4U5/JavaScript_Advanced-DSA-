@@ -1,0 +1,9 @@
+function sumOfDigits(n) {
+    // Your code here
+    if(n==0){
+        return 0
+    }
+    // last + sumofremainingDigits
+    return (n%10) + sumOfDigits(Math.floor(n/10))
+}
+console.log(sumOfDigits(124)) // output : 7
