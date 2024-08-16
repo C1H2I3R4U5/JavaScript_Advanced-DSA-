@@ -1,0 +1,21 @@
+function getValue(left,right,a,digit){
+    let mid = Math.floor((left+right)/2);
+    
+    if(left > right){
+        return -1
+    }
+        if(a[mid]==digit){
+            return mid;
+        }
+        else if(a[mid]<digit){
+            return getValue(mid+1,right,a,digit)
+        }
+        else if(a[mid]>digit){
+            return getValue(left,mid-1,a,digit) 
+        }
+    return -1;
+    
+}
+
+let a =[1,2,3,4,5]
+console.log(getValue(0,a.length-1,a,3))
