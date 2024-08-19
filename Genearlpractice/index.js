@@ -74,7 +74,7 @@ function fact(n) {
   }
   return n;
 }
-console.log(fact(4));
+// console.log(fact(4));
 
 //Even or Odd
 
@@ -142,8 +142,8 @@ function prime(n) {
 
 //print the prime numbers
 
-function prime(n) {
-  for (let i = 2; i <= n; i++) {
+function prime(m, n) {
+  for (let i = m; i <= n; i++) {
     let isPrime = true;
     for (let j = 2; j <= Math.sqrt(i); j++) {
       if (i % j == 0) {
@@ -156,7 +156,7 @@ function prime(n) {
     }
   }
 }
-// prime(5);
+// prime(100, 1000);
 
 // Finding Non-Repeating elements in an array
 
@@ -227,3 +227,359 @@ function Armstrong_number(n) {
   }
 }
 // Armstrong_number(100000);
+
+// #Day-2
+
+//Anagram or not
+
+function AnagramFinder(str1, str2) {
+  let newStr1 = str1.toLowerCase().split("").sort().join("");
+
+  let newStr2 = str2.toLowerCase().split("").sort().join("");
+  if (newStr1 == newStr2) {
+    return true;
+  }
+  return false;
+}
+// console.log(AnagramFinder("Hello", "Olelh"));
+
+// stringds should be equal
+
+//Wheather a charater is a Vowel or Consonent
+
+function VowelFinder(Character) {
+  let vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  if (vowels.includes(Character)) {
+    return `${Character} is Vowel`;
+  } else {
+    return `${Character} is Consonent`;
+  }
+}
+// console.log(VowelFinder("P"));
+
+//Largest/Smallest element of the array
+
+function largestElement(arr) {
+  let largestElement = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largestElement) {
+      largestElement = arr[i];
+    }
+  }
+  return largestElement;
+}
+// console.log(largestElement([1, 2, 4, 6, 9, 7]));
+
+//smaller
+
+function smaller(arr) {
+  let smallestNumber = arr.sort((a, b) => a - b);
+  return smallestNumber[0];
+}
+// console.log(smaller([4, 3, 2, 5, 8, 1]));
+
+//Replace a substring in a string
+
+function Substring(str) {
+  let newStr = str.replace(/world/gi, "Boy!");
+  return newStr;
+}
+// console.log(Substring("hello world myself pavan World"));
+
+//Remove duplicates in a Array
+
+// Array of Numbers
+
+function RemoveDuplicates(arr) {
+  let arr1 = [];
+  for (let i of arr) {
+    arr1.push(i.toLowerCase());
+  }
+  let newArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (!newArr.includes(arr1[i])) {
+      newArr.push(arr1[i]);
+    }
+  }
+  return newArr;
+}
+// console.log(RemoveDuplicates(["hi", "hello", "Hi"]));
+
+// Array of Strings
+
+//Reverse Words in a given string
+
+function ReverseWords(str) {
+  let ReversedStr = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    ReversedStr += str[i];
+    console.log(str[i]);
+  }
+  return ReversedStr;
+}
+// console.log(ReverseWords("Hello"));
+
+//Sum of Digits of a number
+
+// normal method
+
+function SumOfDigits(num) {
+  let n = num.toString().split("").map(Number);
+  let result = 0;
+  for (let i = 0; i < n.length; i++) {
+    result += n[i];
+  }
+  return result;
+}
+// console.log(SumOfDigits(1234));
+
+// recursion method
+
+function SumOfDigits(num) {
+  if (num == 0) {
+    return 0;
+  }
+  return (num % 10) + SumOfDigits(Math.floor(num / 10));
+}
+
+// console.log(SumOfDigits(123));
+
+// //*
+// * *
+// * * *
+// * * * *
+// * * * * *
+
+// function rows(n) {
+//   for (let i = 0; i <= n; i++) {
+//     let star = "";
+//     for (let j = 1; j <= i; j++) {
+//       star += " * ";
+//     }
+//     console.log(star.trim());
+//   }
+// }
+// rows(5);
+
+function rows(n) {
+  for (let i = 1; i <= n; i++) {
+    let spaces = " ".repeat(n - i);
+    let stars = "* ".repeat(i);
+    console.log(spaces + stars.trim());
+  }
+}
+// rows(5);
+
+function rows(n) {
+  for (let i = 1; i <= n; i++) {
+    let spaces = " ".repeat(i * 2);
+    let stars = "* ".repeat(n - i);
+    console.log(spaces + stars.trim());
+  }
+}
+// rows(5);
+function rows(n) {
+  for (let i = 1; i <= n; i++) {
+    // let spaces = " ".repeat(n - i);
+    let stars = "* ".repeat(i);
+    console.log(stars.trim());
+  }
+}
+// rows(5);
+
+// convert a number from decimal to binary
+
+let a = 22;
+// console.log(a.toString(2));
+
+// find a duplicate charater in a string
+
+function duplicateFinder(str) {
+  let newArr = str.split("");
+  let frq = {};
+  let duplicates = [];
+  for (let i = 0; i < newArr.length; i++) {
+    let element = newArr[i];
+    frq[element] = (frq[element] || 0) + 1;
+  }
+  for (let i = 0; i < newArr.length; i++) {
+    if (frq[newArr[i]] > 1 && !duplicates.includes(newArr[i])) {
+      duplicates.push(newArr[i]);
+    }
+  }
+  return duplicates.join(",");
+} // time compexity- O(n2)     space complexity- O(n)
+// console.log(duplicateFinder("heheheii"));
+function duplicateFinder(str) {
+  let frq = {};
+  let duplicates = [];
+  for (let char of str) {
+    if (frq[char]) {
+      frq[char]++;
+    } else {
+      frq[char] = 1;
+    }
+  }
+  for (let char in frq) {
+    if (frq[char] > 1) {
+      duplicates.push(char);
+    }
+  }
+  return duplicates;
+} // // time compexity- O(2n)=O(n)     space complexity- O(n)
+// console.log(duplicateFinder("heheheii"));
+
+//return any array contaning the digits of a given number
+
+function Arr(n) {
+  let ArrOfDigits = n.toString().split("").map(Number);
+  return ArrOfDigits;
+}
+// console.log(Arr(1234));
+
+//find the second largest number in a unsorted array
+
+function Second_Largest(arr) {
+  let first = -Infinity;
+  let second = -Infinity;
+  for (let i of arr) {
+    if (i > first) {
+      first = i;
+    } else if (i > second) {
+      second = i;
+    }
+  }
+  return second;
+}
+// console.log(Second_Largest([2, 3, 1, 7, 8, 7]));
+
+//print prime numbers b/w 100  and 1000
+
+function getPrimes(m, n) {
+  for (let i = m; i <= n; i++) {
+    let isPrime = true;
+    // Checking the number
+    for (let j = 2; j <= Math.sqrt(i); j++) {
+      if (i % j == 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) {
+      console.log(i);
+    }
+  }
+}
+// getPrimes(100, 1000);
+
+//find the missing number in a given integer array of 1 to 100
+
+//sum of n naturals numbers - sum of the array digits
+
+function missingNumbers(arr) {
+  let n = 100;
+  let exact_Sum = (n * (n + 1)) / 2;
+  let actual_Sum = 0;
+  for (let i of arr) {
+    actual_Sum += i;
+  }
+  return exact_Sum - actual_Sum;
+}
+// console.log(missingNumbers([1, 2, 3, 4, 5, 6, 100]));
+
+//print next 10 years leap year
+function leapYear(n) {
+  // divisible by 4 and divisible by 400 and not divisible by 100
+  if ((n % 4 == 0 && n % 100 !== 0) || n % 400 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+// console.log(leapYear(2028));
+
+function leapYear(n) {
+  let next = n + 1;
+  let i = 0;
+  while (i < 10) {
+    if ((next % 4 == 0 && next % 100 != 0) || next % 400 == 0) {
+      console.log(next);
+      i++;
+    }
+    next++;
+  }
+}
+// leapYear(2024);
+
+//convert any number to its equalent word
+
+function Words(num) {
+  if (num == 0) {
+    return "zero";
+  }
+
+  let Ones = [
+    "Zero",
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen",
+  ];
+  let Tens = [
+    "",
+    "",
+    "Twenty",
+    "Thirty",
+    "Forty",
+    "Fifty",
+    "Sixty",
+    "Seventy",
+    "Eighty",
+    "Ninety",
+  ];
+  let thousands = ["", "Thousand", "Million", "Billion"];
+
+  function helper(n) {
+    if (n < 10) {
+      return Ones[n];
+    }
+
+    if (n < 100) {
+      return Tens[Math.floor(n / 10)] + " " + Ones[n % 10];
+    }
+
+    if (n < 1000) {
+      return (
+        Ones[Math.floor(n / 100)] + " " + "Hunderad" + " " + helper(n % 100)
+      );
+    }
+    for (let i = 0; i < thousands.length; i++) {
+      const unit = 1000 ** (i + 1);
+      if (n < unit) {
+        return (
+          helper(Math.floor(n / (unit / 1000))) +
+          " " +
+          thousands[i] +
+          (n % (unit / 1000) ? " " + helper(n % (unit / 1000)) : "")
+        );
+      }
+    }
+  }
+  return helper(num).trim();
+}
+console.log(Words(55555));
