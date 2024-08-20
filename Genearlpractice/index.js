@@ -569,17 +569,22 @@ function Words(num) {
       );
     }
     for (let i = 0; i < thousands.length; i++) {
-      const unit = 1000 ** (i + 1);
+      let unit = 1000 ** (i + 1);
       if (n < unit) {
         return (
-          helper(Math.floor(n / (unit / 1000))) +
+          helper([Math.floor(n / (unit / 1000))]) +
           " " +
           thousands[i] +
-          (n % (unit / 1000) ? " " + helper(n % (unit / 1000)) : "")
+          " " +
+          helper(n % (unit / 1000))
         );
       }
     }
   }
   return helper(num).trim();
 }
-console.log(Words(55555));
+// console.log(Words(555555));
+
+// done for the day
+
+// #day 3
