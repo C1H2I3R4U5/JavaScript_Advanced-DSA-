@@ -588,3 +588,60 @@ function Words(num) {
 // done for the day
 
 // #day 3
+
+// Print Multiplication Table
+// Write a program to print the multiplication table of a given number using a loop.
+
+// function Table(n, mutiples) {
+//   for (let i = 1; i <= mutiples; i++) {
+//     console.log(`${n} * ${i} = ${n * i}`);
+//   }
+// }
+// Table(3, 10);
+
+function rows(n) {
+  for (let i = 1; i <= n; i++) {
+    let spaces = " ".repeat(n - i);
+    let stars = "1 ".repeat(i);
+    console.log(spaces + stars.trim());
+  }
+}
+// rows(4);
+
+function row(n) {
+  for (let i = 1; i <= n; i++) {
+    // let spaces = " ".repeat(n - i);
+    let stars = "1 ".repeat(i);
+    console.log(stars.trim());
+  }
+}
+// row(5);
+
+// Number Pyramid
+// Write a program to print a pyramid of numbers using nested loops:
+
+//    1
+//   121
+//  12321
+// 1234321
+
+function printNumberPyramid(n) {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= n - i; j++) {
+      row += " ";
+    }
+    for (let j = 1; j <= i; j++) {
+      row += j;
+    }
+    for (let j = i - 1; j >= 1; j--) {
+      row += j;
+    }
+    console.log(row);
+  }
+}
+
+// printNumberPyramid(4);
+
+// GCD of Two Numbers
+// Write a program to find the greatest common divisor (GCD) of two numbers using loops.
