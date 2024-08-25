@@ -451,7 +451,7 @@ function Second_Largest(arr) {
   }
   return second;
 }
-// console.log(Second_Largest([2, 3, 1, 7, 8, 7]));
+// console.log(Second_Largest([2, 4, 3, 5, 6]));
 
 //print prime numbers b/w 100  and 1000
 
@@ -645,3 +645,157 @@ function printNumberPyramid(n) {
 
 // GCD of Two Numbers
 // Write a program to find the greatest common divisor (GCD) of two numbers using loops.
+
+// recursion way
+
+function GCD(n1, n2) {
+  if (n1 == n2) {
+    return n1;
+  }
+
+  if (n1 > n2) {
+    return GCD(n1 - n2, n2);
+  }
+  return GCD(n1, n2 - n1);
+}
+// console.log(GCD(36, 60));
+
+// Normal way
+function GD(a, b) {
+  let result = Math.min(a, b);
+  while (result > 0) {
+    if (a % result == 0 && b % result == 0) {
+      break;
+    }
+    result--;
+  }
+  return result;
+}
+// console.log(GD(36, 60));
+
+// # day 3 continued
+
+// arrays
+
+let arr1 = [1, 2, 3];
+
+//adding numbers
+
+arr1.push(4, 5, 8);
+// console.log(arr1);
+
+// Basic Array Push:
+// Write a JavaScript function that initializes an empty array and then uses the push
+// method to add 5 different elements to the array.Display the array after each push.
+
+function ArrayPush(arr) {
+  for (let i = 1; i <= 5; i++) {
+    arr.push(i);
+    console.log(arr);
+  }
+}
+// ArrayPush([]);
+
+// Push Multiple Elements:
+// Write a JavaScript function that pushes multiple elements into an array at once.
+// For example, push three numbers(10, 20, 30) into an array in a single call.
+
+function Push(arr) {
+  for (let i = 1; i <= 1; i++) {
+    arr.push(i, i + 1, i + 2);
+  }
+  return arr;
+}
+// console.log(Push([]));
+
+// Push and Array Length:
+// Create a function that adds an element to an array using the push method and returns
+// the new length of the array after the addition.Test this function with different inputs.
+
+function push1(arr) {
+  arr.push(2, 3);
+  return arr.length;
+}
+// console.log(push1([1, 6, 7]));
+
+// Simulate Stack Using Array:
+//  Implement a stack(LIFO structure) using an array.Use the push method to add elements to
+//  the stack and pop to remove the top element.Include a method to display the current
+// state of the stack.
+
+function push2(arr) {
+  for (let i = 1; i <= 5; i++) {
+    arr.push(i);
+    console.log(arr);
+  }
+  //arr=[1,2,3,4,5]
+  for (j = 1; j <= 5; j++) {
+    arr.pop();
+    console.log(arr);
+  }
+}
+// push2([]);
+
+// Push and Reverse:
+// Write a function that takes two arrays, pushes all elements of the second array into the
+// first one using a loop and the push method, and then reverses the final array.
+
+function push3(arr1, arr2) {
+  for (let i of arr2) {
+    arr1.push(i);
+  }
+  // console.log(arr1);
+  console.log(arr1.reverse());
+}
+
+// push3([1, 2, 3], [4, 5, 6]);
+
+//slice
+
+// let arr2 = [1, 2, 3, 4, 5];
+// console.log(arr2.slice(1, 4));
+// console.log(arr2.splice(1, 1, 3));
+// console.log(arr2);
+
+// Problem 1: Find the Second Largest Element
+// Write a function that takes an array of numbers as input and returns the second largest element in the array. If the array contains less than two elements, the function should return null.
+
+// Example:
+
+// Input: [12, 35, 1, 10, 34, 1]
+// Output: 34
+
+// Input: [10, 5, 10]
+// Output: 5
+
+// Input: [7]
+// Output: null
+
+function second(arr) {
+  let first = -Infinity;
+  let second = -Infinity;
+  if (arr.length == 1) {
+    console.log("null");
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > first) {
+        second = first;
+        first = arr[i];
+      } else if (arr[i] > second && arr[i] !== first) {
+        second = arr[i];
+      }
+    }
+    console.log(second);
+  }
+}
+
+// second([10, 5, 10]);
+
+// Input: arr1 = [1, 3, 5, 7], arr2 = [2, 4, 6, 8]
+// Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+function Arr(arr1, arr2) {
+  let newArr = arr1.concat(arr2);
+  console.log(newArr.sort((a, b) => b - a));
+}
+// Arr([1, 3], [6, 4, 5]);
