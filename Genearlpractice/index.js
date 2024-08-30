@@ -799,3 +799,29 @@ function Arr(arr1, arr2) {
   console.log(newArr.sort((a, b) => b - a));
 }
 // Arr([1, 3], [6, 4, 5]);
+
+let str = "apples";
+let newStr = str.split("");
+for (let i = 0; i < newStr.length; i++) {
+  if (newStr[i] === "a") {
+    newStr[i] = "p";
+  } else if (newStr[i] === "p") {
+    newStr[i] = "a";
+  }
+}
+// console.log(newStr.join(""));
+
+//swap two numbers without using third variable
+
+let a1 = 10;
+b = 20;
+
+// let temp = a1;
+// a1 = b;
+// b = temp;
+
+a1 = a1 + b; //a1=30
+b = a1 - b; // b=10
+a1 = a1 - b; //a1=20
+console.log(a1);
+console.log(b);
